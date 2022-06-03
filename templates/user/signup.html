@@ -1,0 +1,39 @@
+{% extends 'base.html' %}   {#base.html을 위에 추가 해주겠다는 의미임 그 밑에 쭈우욱 써주겠다.#}
+
+{% block title %}
+    회원가입
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="wrap">
+            <h2 class="title-center"> 회원가입 </h2>
+            {# form이라는 것은 중요한 테그이다. 화면에 있는 데이터를 서버로 전송할 때 많이 사용 속성을 추가해보자 #}
+            {# method는 어디로 GET인지 POST인지 결정 어떤 함수를 사용할 것인지는 action을 통해서/~~/붙여주기#}
+            {# django에는 보안을 위한 여러가지들이 주어져있다. #}
+            <form class="form-area" method="post" action="/sign-up/">
+                {% csrf_token %}
+                <div class="form-group mt-2 mb-2">
+                    <label for="username">이름</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                    <label for="password">비밀번호</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                    <label for="password2">비밀번호 확인</label>
+                    <input type="password" class="form-control" id="password2" name="password2">
+                </div>
+                <div class="form-group mt-2 mb-2">
+                    <label for="email">자주 사용하는 email을 입력하세요</label>
+                    <input type="text" class="form-control" id="email" name="email">
+                </div>
+                <hr>
+                <div style="float: right">
+                    <button type="submit" class="btn btn-primary">회원가입</button>
+                    <a href="/sign-in" class="btn btn-secondary">로그인 페이지로</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
